@@ -610,8 +610,9 @@ html,body{margin:0;padding:0;background:var(--cb-bg);color:var(--cb-ink)}
     10: { html: "π<sup>10</sup>/93.555", v: Math.pow(PI, 10) / 93555 },
     12: { html: "691 π<sup>12</sup>/638.512.875", v: 691 * Math.pow(PI, 12) / 638512875 }
   };
-  var ODD_NOTE = "Ni tan sols se sap si és irracional. El 2001, Wadim Zudilin va demostrar que almenys un dels quatre marcats al rellotge (5, 7, 9 i 11) ho és. Quin, no se sap.";
+  var ODD_NOTE = "Ni tan sols se sap si és irracional. El 2001, Wadim Zudilin va demostrar que almenys un dels quatre marcats al rellotge (5, 7, 9 i 11) ho és, i des del setembre de 2026 se sap que ho és el 5.";
   var NOTE = {
+    5: "Els quatre marcats (5, 7, 9 i 11) són els de Zudilin: el 2001 va demostrar que almenys un és irracional. El 17 de setembre de 2026, Aabir Fauzan va publicar una demostració que ho és aquest, ja verificada amb Lean. Fórmula tancada, cap.",
     1: "És la sèrie harmònica de la cursa, i no s'atura mai: Pietro Mengoli ja ho havia demostrat el 1650.",
     2: "El problema de Basilea. Euler en va presentar la solució el desembre de 1735, amb vint-i-vuit anys.",
     3: "La constant d'Apéry. Roger Apéry va demostrar el 1978 que és irracional. Una fórmula tancada, ningú no l'ha trobada.",
@@ -685,7 +686,7 @@ html,body{margin:0;padding:0;background:var(--cb-bg);color:var(--cb-ink)}
         c.hidden = true;
       }
     }
-    $("cb-note").textContent = (s % 2 === 1 ? (s >= 5 ? ODD_NOTE : NOTE[s]) : NOTE[s]);
+    $("cb-note").textContent = NOTE[s] || ODD_NOTE;
   }
 
   /* ---------- start ---------- */
