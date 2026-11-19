@@ -162,12 +162,18 @@ html,body{margin:0;padding:0;background:var(--cb-bg);color:var(--cb-ink)}
 .crm-basilea .cb-credit{margin:10px 0 0;font-size:.85rem;color:var(--cb-muted)}
 .crm-basilea .cb-nocase{text-transform:none;letter-spacing:0}
 .crm-basilea cite{font-style:italic}
+.crm-basilea .cb-eyebrow a{color:inherit;text-decoration:none}
+.crm-basilea .cb-eyebrow a:hover{text-decoration:underline;text-underline-offset:3px}
+.crm-basilea .cb-more{display:flex;flex-wrap:wrap;gap:4px 16px;margin:8px 0 0;font-size:.85rem;color:var(--cb-muted)}
+.crm-basilea .cb-more span{font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.crm-basilea .cb-more a{color:var(--cb-red);font-weight:600;text-decoration:none}
+.crm-basilea .cb-more a:hover{text-decoration:underline;text-underline-offset:3px}
 </style>
 </head>
 <body>
 <main class="crm-basilea" id="cb-lab">
 <header class="cb-head">
-<p class="cb-eyebrow">El Gegant del <span class="cb-nocase">π</span> · Interactiu</p>
+<p class="cb-eyebrow"><a href="https://crmatematica.wordpress.com/">El Gegant del <span class="cb-nocase">π</span></a> · Interactiu</p>
 <h1 class="cb-title">Laboratori de Basilea</h1>
 <p class="cb-lede">Tres experiments per veure com π es cola en una suma on no hi ha cap cercle.</p>
 <div class="cb-intro">
@@ -276,6 +282,11 @@ html,body{margin:0;padding:0;background:var(--cb-bg);color:var(--cb-ink)}
 </section>
 <p class="cb-foot">Tots els càlculs es fan al teu navegador, amb uns 16 dígits de precisió. A la cursa, per a les sumes llarguíssimes, el navegador fa com Euler: suma els primers termes i estima la resta amb la seva fórmula.</p>
 <p class="cb-credit">Fet per a <cite>El Gegant del π</cite> · Centre de Recerca Matemàtica · 2026</p>
+<nav class="cb-more" aria-label="Més jocs d'El Gegant del π"><span>Més jocs</span>
+<a href="https://maebase-netizen.github.io/dotze_oscilladors/">Els dotze oscil·ladors</a>
+<a href="https://maebase-netizen.github.io/hairy_ball_theorem/">Pentina l’eriçó</a>
+<a href="https://maebase-netizen.github.io/pi_de_memoria/">Pi de memòria</a>
+</nav>
 </main>
 <script>
 (function () {
@@ -414,6 +425,7 @@ html,body{margin:0;padding:0;background:var(--cb-bg);color:var(--cb-ink)}
   function update1() {
     var S = sqSum(curN), H = hSum(curN);
     nOut.innerHTML = fmtInt(curN) + (curN >= 1e6 ? " <small>(" + fmtBig(curN, 3) + ")</small>" : "");
+    nInput.setAttribute("aria-valuetext", (curN === 1) ? "1 terme" : fmtInt(curN) + " termes");
     $("cb-sq-expr").textContent = sqExpr(curN);
     $("cb-h-expr").textContent = hExpr(curN);
     $("cb-sq-val").textContent = fmtFixed(S, 15);
@@ -612,8 +624,8 @@ html,body{margin:0;padding:0;background:var(--cb-bg);color:var(--cb-ink)}
   };
   var ODD_NOTE = "Ni tan sols se sap si és irracional. El 2001, Wadim Zudilin va demostrar que almenys un dels quatre marcats al rellotge (5, 7, 9 i 11) ho és, i des del setembre de 2026 se sap que ho és el 5.";
   var NOTE = {
-    5: "Els quatre marcats (5, 7, 9 i 11) són els de Zudilin: el 2001 va demostrar que almenys un és irracional. El 17 de setembre de 2026, Aabir Fauzan va publicar una demostració que ho és aquest, ja verificada amb Lean. Fórmula tancada, cap.",
-    1: "És la sèrie harmònica de la cursa, i no s'atura mai: Pietro Mengoli ja ho havia demostrat el 1650.",
+    5: "Els quatre marcats (5, 7, 9 i 11) són els de Zudilin: el 2001 va demostrar que almenys un és irracional. El 17 de setembre de 2026, Aabir Fauzan va publicar una demostració que aquest sí que ho és, ja verificada amb Lean. Fórmula tancada, cap.",
+    1: "És la sèrie harmònica de la cursa, i no s'atura mai. Nicole Oresme ja ho va demostrar cap al 1350, i Pietro Mengoli ho va tornar a fer el 1650.",
     2: "El problema de Basilea. Euler en va presentar la solució el desembre de 1735, amb vint-i-vuit anys.",
     3: "La constant d'Apéry. Roger Apéry va demostrar el 1978 que és irracional. Una fórmula tancada, ningú no l'ha trobada.",
     4: "Euler, el 1735, en el mateix article on resolia el problema de Basilea.",
